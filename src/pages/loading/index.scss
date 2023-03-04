@@ -1,0 +1,25 @@
+@keyframes preloader {
+    100% { transform: scale(2); }
+}
+
+.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 100vh;
+    .loader-element{
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background-color: white;
+        margin: 40px
+    }
+}
+
+@for $i from 0 through 2 {
+    .loader-element:nth-child(#{calc($i + 1)}){
+        animation: preloader .6s ease-in-out #{calc(.2*$i)}s infinite alternate none;
+        // animation: name duration timing-function delay iteration-count direction fill-mode;
+    }
+}

@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Words from './pages/words';
+import Loading from './pages/loading';
+import Pacman from "./pages/pacman";
+import './App.scss';
 
-function App() {
+export default function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <div className="App">
+          <ul className="App-header">
+            <li>
+              <Link to="/">Words</Link>
+            </li>
+            <li>
+              <Link to="/about">Loading</Link>
+            </li>
+            <li>
+              <Link to="/pacman">Pacman</Link>
+            </li>
+          </ul>
+          <Routes>
+              <Route exact path='/' element={< Words />}></Route>
+              <Route exact path='/about' element={< Loading />}></Route>
+              <Route exact path='/pacman' element={< Pacman />}></Route>
+          </Routes>
+        </div>
+    </BrowserRouter>
+  )
 }
-
-export default App;
